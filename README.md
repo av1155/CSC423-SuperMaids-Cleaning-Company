@@ -1,15 +1,15 @@
 # SuperMaids Cleaning Company Database
 
-**CSC 423 - Database Systems**  
-**University of Miami**  
-**Authors:** Andrea A. Venti Fuentes, Jeremiah Moise  
+**CSC 423 - Database Systems**
+**University of Miami**
+**Authors:** Andrea A. Venti Fuentes, Jeremiah Moise
 **Date:** December 07, 2025
 
 ---
 
 ## Project Overview
 
-This project implements a relational database for SuperMaids Cleaning Company using **Oracle Enterprise DBMS**. The database manages clients, employees, cleaning requirements, equipment, and their relationships.
+This project implements a relational database for SuperMaids Cleaning Company using **SQLite**. The database manages clients, employees, cleaning requirements, equipment, and their relationships.
 
 ---
 
@@ -31,46 +31,40 @@ This project implements a relational database for SuperMaids Cleaning Company us
 ### Part 3 Implementation
 
 1. **`supermaids_part3.sql`**
-    - Complete Oracle SQL script
+    - Complete SQLite SQL script
     - Creates all tables with constraints (Part 3a)
     - Inserts 5 tuples per table (Part 3b)
     - Contains all 5 transaction queries (Part 3c)
 
 2. **`supermaids_part3.py`**
     - Python implementation with embedded SQL
-    - Demonstrates the 5 transaction queries using oracledb driver
-    - Requires Oracle database connection
-
-3. **`requirements.txt`**
-    - Python dependencies
-
-4. **`script_output.txt`**
-    - Execution output demonstrating successful implementation
+    - Demonstrates the 5 transaction queries using sqlite3 module
+    - Creates a local `supermaids.db` database file
 
 ---
 
 ## Usage
 
-### Oracle SQL Script
+### SQLite SQL Script
 
-1. Open [Oracle Live SQL](https://livesql.oracle.com/)
-2. Sign in (create free account)
-3. Click "SQL Worksheet"
-4. Paste entire `supermaids_part3.sql`
-5. Click "Run Script"
+You can run the SQL script using the SQLite command-line tool:
+
+```bash
+# Run the script and create the database
+sqlite3 supermaids.db < supermaids_part3.sql
+
+# Or run interactively
+sqlite3 supermaids.db
+sqlite> .read supermaids_part3.sql
+```
 
 ### Python Script
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Update connection credentials in supermaids_part3.py
-# Then run:
 python supermaids_part3.py
 ```
 
-**Note:** Python script requires Oracle database connection credentials (username, password, DSN).
+The Python script will create a `supermaids.db` file in the current directory.
 
 ---
 
@@ -96,7 +90,7 @@ python supermaids_part3.py
 ### Constraints
 
 - All primary keys are NOT NULL by default
-- CHECK constraints on salary ≥ 0, cost ≥ 0, duration > 0, quantity > 0
+- CHECK constraints on salary >= 0, cost >= 0, duration > 0, quantity > 0
 - Required fields marked NOT NULL
 - Referential integrity enforced via foreign keys
 
